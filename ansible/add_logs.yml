@@ -1,0 +1,34 @@
+  - name: Install log agent on windows vms
+    hosts: elk_log
+    tasks:
+      - name: goida
+        ansible.windows.win_shell: |
+          # Enable auditing for important security events
+          # AuditPol /set /subcategory:"Logon" /success:enable /failure:enable
+          # AuditPol /set /subcategory:"Logoff" /success:enable /failure:enable
+          # AuditPol /set /subcategory:"Account Lockout" /success:enable /failure:enable
+          # AuditPol /set /subcategory:"Logon/Logoff" /success:enable /failure:enable
+          # AuditPol /set /subcategory:"Special Logon" /success:enable
+          # AuditPol /set /subcategory:"User Account Management" /success:enable /failure:enable
+          # AuditPol /set /subcategory:"Security Group Management" /success:enable /failure:enable
+          # AuditPol /set /subcategory:"Computer Account Management" /success:enable /failure:enable
+          # AuditPol /set /subcategory:"Other Account Management Events" /success:enable /failure:enable
+          # AuditPol /set /subcategory:"Directory Service Access" /success:enable /failure:enable
+          # AuditPol /set /subcategory:"Directory Service Changes" /success:enable /failure:enable
+          # AuditPol /set /subcategory:"Directory Service Replication" /success:enable /failure:enable
+          # AuditPol /set /subcategory:"Account Logon" /success:enable /failure:enable
+          # AuditPol /set /subcategory:"Authentication Policy Change" /success:enable /failure:enable
+          # AuditPol /set /subcategory:"Authorization Policy Change" /success:enable /failure:enable
+          # AuditPol /set /subcategory:"MPSSVC Rule-Level Policy Change" /success:enable /failure:enable
+          # AuditPol /set /subcategory:"Other Policy Change Events" /success:enable /failure:enable
+          # AuditPol /set /subcategory:"Audit Policy Change" /success:enable /failure:enable
+          # AuditPol /set /subcategory:"Sensitive Privilege Use" /success:enable /failure:enable
+          # AuditPol /set /subcategory:"IPsec Driver" /success:enable /failure:enable
+          # AuditPol /set /subcategory:"Security State Change" /success:enable /failure:enable
+          # AuditPol /set /subcategory:"Security System Extension" /success:enable /failure:enable
+          # AuditPol /set /subcategory:"System Integrity" /success:enable /failure:enable
+          # AuditPol /set /subcategory:"Kerberos Authentication Service" /success:enable /failure:enable
+          # AuditPol /set /subcategory:"Kerberos Service Ticket Operations" /success:enable /failure:enable
+          # gpupdate /force
+
+          Restart-Service winlogbeat

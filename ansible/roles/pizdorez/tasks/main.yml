@@ -1,0 +1,6 @@
+- name: Update log agent password on windows vms
+  ansible.community.win_linefile:
+    path: 'C:\\Program Files\\Elastic\\winlogbeat\\winlogbeat-7.17.6-windowx-x86_64\\winlogbeat.yml'
+    regexp: 'changeme'
+    line: 'ZsFWea1DfknJjMpAC8Tf'
+    backrefs: yes

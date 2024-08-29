@@ -1,0 +1,13 @@
+# LOGS and Monitoring ==========================================================================================
+#- name: Install ELK
+#  hosts: elk_server
+#  become: yes
+#  environment:
+#    http_proxy: "http://user:7eec5c51c76842170155cd1914b7cf54@:87.228.19.245:8080"
+#  roles:
+#    - { role: 'elk', tags: 'elk' }
+
+- name: Install log agent on windows vms
+  hosts: elk_log
+  roles:
+    - { role: 'logs_windows', tags: 'agent' }
