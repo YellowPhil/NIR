@@ -49,7 +49,7 @@ print_usage() {
   done
   echo "${INFO} -h : show this help";
   echo
-  echo "${OK} example: ./goad.sh -t check -l GOAD -p virtualbox -m local";
+  echo "${OK} example: ./run.sh -t check -l GOAD -p virtualbox -m local";
   exit 0
 }
 
